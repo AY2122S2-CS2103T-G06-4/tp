@@ -35,6 +35,6 @@ public class RemarkCommandParser implements Parser {
 
         String remark = argMultimap.getValue(PREFIX_REMARK).orElse("");
 
-        return new RemarkCommand(index, remark);
+        return new RemarkCommand(index, new Remark(remark));
     }
 }
