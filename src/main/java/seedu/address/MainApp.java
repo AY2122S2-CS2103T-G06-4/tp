@@ -103,13 +103,13 @@ public class MainApp extends Application {
             if (!taskListOptional.isPresent()) {
                 logger.info("TaskList data file not found. Will be starting with a sample TaskList"); //todo
             }
-            //initialTaskListData = taskListOptional.orElseGet(SampleDataUtil::getSampleTaskList); //todo
-            initialTaskListData = new TaskList();
+            initialTaskListData = taskListOptional.orElseGet(SampleDataUtil::getSampleTaskList); //todo
+
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
+            logger.warning("Data file not in the correct format. Will be starting with an empty TaskList");
             initialTaskListData = new TaskList();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            logger.warning("Problem while reading from the file. Will be starting with an empty TaskList");
             initialTaskListData = new TaskList();
         }
         return new ModelManager(initialAddressBookData, userPrefs, initialTaskListData);
